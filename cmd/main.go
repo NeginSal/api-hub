@@ -14,7 +14,10 @@ import (
 func main() {
 	config.LoadEnv()
 
-	r := gin.Default()
+	// r := gin.Default()
+	r := gin.New()
+	r.Use(gin.Recovery())
+	r.Use(middleware.LoggerMiddleware())
 
 	// Health check endpoint
 	r.GET("/health", func(c *gin.Context) {
