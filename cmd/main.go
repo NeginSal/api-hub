@@ -1,3 +1,12 @@
+// @title API Hub
+// @version 1.0
+// @description Microservice Gateway to LMS, HMS, BMS
+// @host localhost:8080
+// @BasePath /
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
+
 package main
 
 import (
@@ -9,13 +18,16 @@ import (
 
 	"github.com/NeginSal/api-hub/internal/handlers"
 	"github.com/gin-gonic/gin"
+
+	_ "github.com/NeginSal/api-hub/docs"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func main() {
 	config.LoadEnv()
 	config.ConnectMongo()
 
-	// r := gin.Default()
 	r := gin.New()
 	r.Use(gin.Recovery(), middleware.LoggerMiddleware(), middleware.RateLimitMiddleware())
 
@@ -25,6 +37,9 @@ func main() {
 	})
 
 	r.POST("/login", handlers.LoginHandler)
+
+	// Swagger route
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.URL("/swagger/doc.json")))
 
 	protected := r.Group("/protected")
 	protected.Use(middleware.AuthMiddleware())

@@ -11,6 +11,17 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// LoginHandler godoc
+// @Summary Login with username and password
+// @Description Returns JWT token if credentials are valid
+// @Tags auth
+// @Accept json
+// @Produce json
+// @Param credentials body models.User true "User credentials"
+// @Success 200 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Router /login [post]
+
 func LoginHandler(c *gin.Context) {
 	var user models.User
 	if err := c.ShouldBindJSON(&user); err != nil {
