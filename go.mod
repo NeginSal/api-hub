@@ -13,7 +13,7 @@ require github.com/sirupsen/logrus v1.9.3
 require (
 	github.com/pkg/sftp v1.13.9
 	github.com/swaggo/files v1.0.1
-	github.com/swaggo/swag v1.16.4 // indirect
+	github.com/swaggo/swag v1.16.4 
 	golang.org/x/time v0.11.0
 )
 
