@@ -13,6 +13,11 @@ require github.com/sirupsen/logrus v1.9.3
 require golang.org/x/time v0.11.0
 
 require (
+	github.com/kr/fs v0.1.0 // indirect
+	github.com/pkg/sftp v1.13.9 // indirect
+)
+
+require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect

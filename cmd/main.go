@@ -34,6 +34,7 @@ func main() {
 		})
 
 		protected.GET("/lms", handlers.FetchLMSHandler)
+		protected.GET("/sftp", handlers.SFTPHandler)
 	}
 
 	// start server
