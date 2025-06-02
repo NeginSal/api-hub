@@ -13,12 +13,11 @@ import (
 
 func main() {
 	config.LoadEnv()
+	config.ConnectMongo()
 
 	// r := gin.Default()
 	r := gin.New()
-	r.Use(gin.Recovery())
-	r.Use(middleware.LoggerMiddleware())
-	r.Use(middleware.RateLimitMiddleware())
+	r.Use(gin.Recovery(), middleware.LoggerMiddleware(), middleware.RateLimitMiddleware())
 
 	// Health check endpoint
 	r.GET("/health", func(c *gin.Context) {
@@ -29,9 +28,13 @@ func main() {
 
 	protected := r.Group("/protected")
 	protected.Use(middleware.AuthMiddleware())
-	protected.GET("", func(ctx *gin.Context) {
-		ctx.JSON(http.StatusOK, gin.H{"message": "Welcome to protected route!"})
-	})
+	{
+		protected.GET("", func(c *gin.Context) {
+			c.JSON(http.StatusOK, gin.H{"message": "Welcome to protected route!"})
+		})
+
+		protected.GET("/lms", handlers.FetchLMSHandler)
+	}
 
 	// start server
 	if err := r.Run(":8080"); err != nil {

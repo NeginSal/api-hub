@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "title": "Go Basics",
+    "duration": 90
+  },
+  {
+    "id": "2",
+    "title": "Intro to REST",
+    "duration": 120
+  }
+]
