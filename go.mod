@@ -8,7 +8,9 @@ require github.com/gin-gonic/gin v1.10.1
 
 require github.com/joho/godotenv v1.5.1
 
-require github.com/sirupsen/logrus v1.9.3 // indirect
+require github.com/sirupsen/logrus v1.9.3
+
+require golang.org/x/time v0.11.0
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect

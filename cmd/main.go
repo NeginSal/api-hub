@@ -18,6 +18,7 @@ func main() {
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(middleware.LoggerMiddleware())
+	r.Use(middleware.RateLimitMiddleware())
 
 	// Health check endpoint
 	r.GET("/health", func(c *gin.Context) {
