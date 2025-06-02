@@ -56,7 +56,9 @@ api-hub/
 Clone the repo
 
 Create `.env` file with:
-`JWT_SECRET`
+
+`JWT_SECRET=""`
+
 
 `MONGO_URI=mongodb+srv://...your_atlas_uri`
 
